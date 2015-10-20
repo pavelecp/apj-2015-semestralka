@@ -2,15 +2,27 @@ package cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.impl;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.OrderDAOFactory;
+import cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.OrderDAOInterface;
 import cz.cvut.fit.pavelpat.apj.semestralka.model.Order;
 import cz.cvut.fit.pavelpat.apj.semestralka.model.id.OrderID;
 
-public class OrderDefaultDAO implements OrderDAOFactory {
+public class OrderDefaultDAO implements OrderDAOInterface {
 
+	private static OrderDefaultDAO instance = null;
+	
+	public static OrderDefaultDAO getInstance() {
+		if (instance == null) {
+			instance = new OrderDefaultDAO();
+		}
+		return instance;
+	}
+	
+	private OrderDefaultDAO () {
+		
+	}
+	
 	private Map<OrderID, Order> map = new HashMap<>();
 	
 	@Override
@@ -24,9 +36,9 @@ public class OrderDefaultDAO implements OrderDAOFactory {
 	}
 
 	@Override
-	public List<Order> getAll() {
+	public Collection<Order> getAll() {
 		Collection<Order> values = map.values();
-		return (List<Order>) values;
+		return values;
 	}
 
 

@@ -15,5 +15,6 @@ public abstract class DAOFactory {
 
 	public abstract CustomerDAOInterface getCustomerDAO ();
 	public abstract RestaurantDAOInterface getRestaurantDAO ();
+	public abstract OrderDAOInterface getOrderDAO ();
 	
 }
