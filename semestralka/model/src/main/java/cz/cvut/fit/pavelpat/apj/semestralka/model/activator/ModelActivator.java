@@ -1,13 +1,13 @@
 package cz.cvut.fit.pavelpat.apj.semestralka.model.activator;
 
+import java.util.logging.Logger;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ModelActivator implements BundleActivator  {
 	
-	private Logger logger = LoggerFactory.getLogger(ModelActivator.class.getSimpleName());
+	private Logger logger = Logger.getLogger(ModelActivator.class.getSimpleName());
 	
 	@Override
 	public void start(BundleContext context) throws Exception {

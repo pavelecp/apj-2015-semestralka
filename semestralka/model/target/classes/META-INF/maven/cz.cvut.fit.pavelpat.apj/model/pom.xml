@@ -8,6 +8,14 @@
 	</parent>
 	<artifactId>model</artifactId>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>6.0.0</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -16,8 +24,8 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-<!-- 						<Export-Package>org.foo.myproject.api</Export-Package> -->
-<!-- 						<Private-Package>org.foo.myproject.*</Private-Package> -->
+						<!-- <Export-Package>org.foo.myproject.api</Export-Package> -->
+						<!-- <Private-Package>org.foo.myproject.*</Private-Package> -->
 						<Bundle-Activator>cz.cvut.fit.pavelpat.apj.semestralka.model.activator.ModelActivator</Bundle-Activator>
 					</instructions>
 				</configuration>
