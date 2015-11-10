@@ -2,7 +2,6 @@ package cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.impl;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.RestaurantDAOInterface;
@@ -11,8 +10,19 @@ import cz.cvut.fit.pavelpat.apj.semestralka.model.id.RestaurantID;
 
 public class RestaurantDefaultDAO implements RestaurantDAOInterface {
 
-	private Map <RestaurantID, Restaurant> map = new HashMap<>();
-	
+	private Map<RestaurantID, Restaurant> map = new HashMap<>();
+	private static RestaurantDefaultDAO instance;
+
+	private RestaurantDefaultDAO() {
+	}
+
+	public static RestaurantDefaultDAO getInstance() {
+		if (instance == null) {
+			instance = new RestaurantDefaultDAO();
+		}
+		return instance;
+	}
+
 	@Override
 	public void save(Restaurant objectToBeSaved) {
 		map.put(objectToBeSaved.getId(), objectToBeSaved);
@@ -24,9 +34,9 @@ public class RestaurantDefaultDAO implements RestaurantDAOInterface {
 	}
 
 	@Override
-	public List<Restaurant> getAll() {
+	public Collection<Restaurant> getAll() {
 		Collection<Restaurant> values = map.values();
-		return (List<Restaurant>) values;
+		return values;
 	}
 
 }

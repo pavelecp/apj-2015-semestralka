@@ -11,8 +11,19 @@ import cz.cvut.fit.pavelpat.apj.semestralka.model.id.CustomerID;
 
 public class CustomerDefaultDAO implements CustomerDAOInterface {
 
-	private Map <CustomerID, Customer> map = new HashMap<>();
-	
+	private Map<CustomerID, Customer> map = new HashMap<>();
+	private static CustomerDefaultDAO instance;
+
+	private CustomerDefaultDAO() {
+	}
+
+	public static CustomerDefaultDAO getInstance() {
+		if (instance == null) {
+			instance = new CustomerDefaultDAO();
+		}
+		return instance;
+	}
+
 	public void save(Customer objectToBeSaved) {
 		map.put(objectToBeSaved.getId(), objectToBeSaved);
 	}
@@ -26,5 +37,5 @@ public class CustomerDefaultDAO implements CustomerDAOInterface {
 		Collection<Customer> values = map.values();
 		return (List<Customer>) values;
 	}
-	
+
 }

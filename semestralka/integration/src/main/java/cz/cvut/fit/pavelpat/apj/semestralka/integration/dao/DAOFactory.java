@@ -4,13 +4,13 @@ import cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.impl.DefaultDAOFacto
 
 public abstract class DAOFactory {
 
-	private static DAOFactory daoFactory;
+	private static DAOFactory instance;
 	
-	public static DAOFactory getDAOFActory() {
-		if (daoFactory == null) {
-			daoFactory = new DefaultDAOFactory();
+	public static DAOFactory getDefaultDao() {
+		if (instance == null) {
+			instance = new DefaultDAOFactory();
 		}
-		return daoFactory;
+		return instance;
 	}
 
 	public abstract CustomerDAOInterface getCustomerDAO ();

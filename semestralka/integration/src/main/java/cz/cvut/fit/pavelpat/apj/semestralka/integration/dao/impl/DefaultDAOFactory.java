@@ -8,12 +8,12 @@ import cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.RestaurantDAOInterfa
 public class DefaultDAOFactory extends DAOFactory {
 
 	public CustomerDAOInterface getCustomerDAO() {
-		return new CustomerDefaultDAO();
+		return CustomerDefaultDAO.getInstance();
 	}
 
 	@Override
 	public RestaurantDAOInterface getRestaurantDAO() {
-		return new RestaurantDefaultDAO();
+		return RestaurantDefaultDAO.getInstance();
 	}
 
 	@Override
