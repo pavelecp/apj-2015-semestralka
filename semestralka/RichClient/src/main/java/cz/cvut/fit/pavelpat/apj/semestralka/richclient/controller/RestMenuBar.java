@@ -6,6 +6,5 @@ public class RestMenuBar extends MenuBar {
 
 	public RestMenuBar() {
 		getMenus().add(new RestMenu());
-		
 	}
 }

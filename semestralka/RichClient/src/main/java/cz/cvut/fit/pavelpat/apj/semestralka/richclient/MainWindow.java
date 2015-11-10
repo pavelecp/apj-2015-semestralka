@@ -2,9 +2,9 @@ package cz.cvut.fit.pavelpat.apj.semestralka.richclient;
 
 import java.util.logging.Logger;
 
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
-import org.osgi.framework.launch.Framework;
 
 import cz.cvut.fit.pavelpat.apj.semestralka.richclient.controller.RestMenuBar;
 import javafx.event.EventHandler;
@@ -18,6 +18,7 @@ public class MainWindow extends Stage {
 	public static MainWindow instance = new MainWindow(null);
 	private BundleContext context;
 	private RestMenuBar menuBar;
+	private Logger logger = Logger.getLogger(MainWindow.class.getName());
 
 	private MainWindow(BundleContext ctx) {
 		this.context = ctx;
@@ -26,17 +27,18 @@ public class MainWindow extends Stage {
 
 			@Override
 			public void handle(WindowEvent event) {
-				Framework f = (Framework) context.getBundle();
+				Bundle f = context.getBundle(0);
 				try {
 					f.stop();
-					f.waitForStop(3000);
-				} catch (BundleException | InterruptedException e) {
-					Logger.getLogger(MainWindow.class.getName()).info("error message");
+				} catch (BundleException e) {
+					logger.warning("Exception while handling event "+ event.getEventType() +" with error: " + e.getMessage());
 				}
 			}
 		});
 
-		// Label label = new Label("Main");
+		this.setTitle("My awesome application.");
+		this.setFullScreen(true);
+		
 		VBox root = new VBox(menuBar);
 		Scene scene = new Scene(root);
 		setScene(scene);
@@ -52,6 +54,12 @@ public class MainWindow extends Stage {
 	}
 
 	public void stop() {
+		Bundle f = context.getBundle(0);
+		try {
+			f.stop();
+		} catch (BundleException e) {
+			logger.warning("Error while exiting application with error: " + e.getMessage());
+		}
 	}
 
 }

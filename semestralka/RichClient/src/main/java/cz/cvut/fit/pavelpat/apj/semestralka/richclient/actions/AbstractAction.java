@@ -8,8 +8,8 @@ public abstract class AbstractAction {
 
 	protected String name;
 
-	public AbstractAction(String string) {
-		this.name = string;
+	public AbstractAction(String name) {
+		this.name = name;
 	}
 
 	protected abstract void execute();

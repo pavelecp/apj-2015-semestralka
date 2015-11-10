@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.DAOFactory;
+import cz.cvut.fit.pavelpat.apj.semestralka.model.Address;
 import cz.cvut.fit.pavelpat.apj.semestralka.model.Customer;
 import cz.cvut.fit.pavelpat.apj.semestralka.model.Order;
 import cz.cvut.fit.pavelpat.apj.semestralka.model.Restaurant;
@@ -31,8 +32,8 @@ public class RestaurantsFacade {
 		return all;
 	}
 
-	public void createRestaurant(Restaurant order) {
-		DAOFactory.getDefaultDao().getRestaurantDAO().save(order);
+	public void createRestaurant(Restaurant restaurant) {
+		DAOFactory.getDefaultDao().getRestaurantDAO().save(restaurant);
 	}
 
 	public Collection<Restaurant> getAllRestaurants() {
@@ -48,4 +49,8 @@ public class RestaurantsFacade {
 		List<Customer> all = DAOFactory.getDefaultDao().getCustomerDAO().getAll();
 		return all;
 	}
+
+	public void createRestaurant(String name, Address address) {
+		DAOFactory.getDefaultDao().getRestaurantDAO().save(name, address);
+	}	
 }
