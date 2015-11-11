@@ -24,4 +24,9 @@ public class Address {
 		return postalNumber;
 	}
 	
+	@Override
+	public String toString() {
+		return street + ", " + postalNumber + " " + city;
+	}
+	
 }
