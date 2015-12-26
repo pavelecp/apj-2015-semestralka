@@ -30,7 +30,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>cz.cvut.fit.pavelpat.apj.semestralka.integration.dao.*</Export-Package>
+						<Export-Package>cz.cvut.fit.pavelpat.apj.semestralka.integration.dao</Export-Package>
 						<!-- <Private-Package>org.foo.myproject.*</Private-Package> -->
 						<Bundle-Activator>cz.cvut.fit.pavelpat.apj.semestralka.integration.activator.IntegrationActivator</Bundle-Activator>
 					</instructions>

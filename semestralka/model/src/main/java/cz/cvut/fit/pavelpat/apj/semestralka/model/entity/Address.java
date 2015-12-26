@@ -1,11 +1,17 @@
-package cz.cvut.fit.pavelpat.apj.semestralka.model;
+package cz.cvut.fit.pavelpat.apj.semestralka.model.entity;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Address {
 
-	private final String city;
-	private final String street;
-	private final int postalNumber;
+	private String city;
+	private String street;
+	private int postalNumber;
 
+	public Address() {
+	}
+	
 	public Address(String city, String street, int postalNumber) {
 		this.city = city;
 		this.street = street;
@@ -27,6 +33,18 @@ public class Address {
 	@Override
 	public String toString() {
 		return street + ", " + postalNumber + " " + city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public void setPostalNumber(int postalNumber) {
+		this.postalNumber = postalNumber;
 	}
 	
 }

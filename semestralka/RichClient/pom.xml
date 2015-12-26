@@ -31,7 +31,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<!-- <Export-Package>org.foo.myproject.api</Export-Package> -->
+						<Export-Package>cz.cvut.fit.pavelpat.apj.semestralka.richclient</Export-Package>
 						<!-- <Private-Package>org.foo.myproject.*</Private-Package> -->
 						<Bundle-Activator>cz.cvut.fit.pavelpat.apj.semestralka.richclient.activator.RichClientActivator</Bundle-Activator>
 					</instructions>

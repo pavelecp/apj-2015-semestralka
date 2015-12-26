@@ -1,6 +1,6 @@
 package cz.cvut.fit.pavelpat.apj.semestralka.richclient.actions;
 
-import cz.cvut.fit.pavelpat.apj.semestralka.richclient.actions.dialogs.CreateRestaurantDialog;
+import cz.cvut.fit.pavelpat.apj.semestralka.richclient.actions.dialogs.CreateEmployeeDialog;
 
 public class CreateRestaurantAction extends AbstractAction {
 
@@ -12,7 +12,7 @@ public class CreateRestaurantAction extends AbstractAction {
 
 	@Override
 	protected void execute() {
-		new CreateRestaurantDialog();
+		new CreateEmployeeDialog();
 	}
 
 }

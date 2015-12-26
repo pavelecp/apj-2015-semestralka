@@ -1,18 +1,16 @@
 package cz.cvut.fit.pavelpat.apj.semestralka.richclient.actions.dialogs;
 
-import java.util.Optional;
-
-import cz.cvut.fit.pavelpat.apj.semestralka.business.RestaurantsFacade;
-import cz.cvut.fit.pavelpat.apj.semestralka.model.Address;
+import cz.cvut.fit.pavelpat.apj.semestralka.business.RestaurantSystemFacade;
+import cz.cvut.fit.pavelpat.apj.semestralka.model.entity.Address;
+import cz.cvut.fit.pavelpat.apj.semestralka.model.entity.Employee;
 import cz.cvut.fit.pavelpat.apj.semestralka.richclient.observe.RichClientObservable;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class CreateRestaurantDialog extends Dialog<ButtonType> {
+public class CreateEmployeeDialog extends AbstractRestaurantsDialog {
 
 	private GridPane pane;
 	private TextField name;
@@ -20,23 +18,15 @@ public class CreateRestaurantDialog extends Dialog<ButtonType> {
 	private TextField street;
 	private TextField postNum;
 
-	public CreateRestaurantDialog() {
-		this.getDialogPane().setContent(createInterior());
-		this.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-		execute();
+	public CreateEmployeeDialog() {
+		super();
 	}
 
-	private void setUpTextFields() {
-		name = new TextField();
-		city = new TextField();
-		street = new TextField();
-		postNum = new TextField();
-	}
-
-	private Node createInterior() {
+	@Override
+	protected Node createInterior() {
 		setUpTextFields();
 		pane = new GridPane();
-		this.setHeaderText("Please enter the restaurant properties.");
+		this.setHeaderText("Please enter the employee information.");
 		this.setResizable(true);
 		pane.add(new Label("Name:"), 1, 1);
 		pane.add(name, 2, 1);
@@ -49,20 +39,24 @@ public class CreateRestaurantDialog extends Dialog<ButtonType> {
 		return pane;
 	}
 
-	public void execute() {
-		Optional<ButtonType> result = this.showAndWait();
-		ButtonType buttonType = result.get();
-		if (buttonType.getButtonData().isCancelButton()) {
-			return;
-		} else {
-			done(buttonType);
-		}
-	}
-
-	private void done(ButtonType buttonType) {
+	@Override
+	protected void ok(ButtonType buttonType) {
 		String tmpName = name.getText();
 		Address tmpAddress = new Address(city.getText(), street.getText(), Integer.parseInt(postNum.getText()));
-		RestaurantsFacade.getInstance().createRestaurant(tmpName, tmpAddress);
+		RestaurantSystemFacade.getInstance().createEmployee(new Employee(tmpName, tmpAddress));
 		RichClientObservable.getInstance().notifyObservers();
+	}
+
+	@Override
+	protected void validate() {
+		// TODO Auto-generated method stub
+	}
+
+	private void setUpTextFields() {
+		name = new TextField();
+		city = new TextField();
+		street = new TextField();
+		postNum = new TextField();
+
 	}
 }
