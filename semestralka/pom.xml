@@ -16,6 +16,10 @@
 		<module>integration</module>
 		<module>business</module>
 		<module>richclient</module>
+		<module>PostgreSQLDB</module>
+		<module>utils</module>
+		<module>connection</module>
+		<module>protocol</module>
 	</modules>
 
 	<build>
